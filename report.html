@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AFIX 프로젝트 보고서</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-sub: #64748b;
+            --border-color: #e2e8f0;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--text-sub);
+        }
+
+        /* 카드 스타일 */
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 24px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .card-title::before {
+            content: '';
+            display: inline-block;
+            width: 4px;
+            height: 24px;
+            background: var(--primary-color);
+            margin-right: 12px;
+            border-radius: 2px;
+        }
+
+        .card-content {
+            font-size: 1.05rem;
+            color: var(--text-main);
+        }
+
+        ul {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+
+        li {
+            margin-bottom: 8px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            border: 1px solid var(--border-color);
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #f1f5f9;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 4px 12px;
+            background: #dbeafe;
+            color: var(--primary-color);
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-right: 5px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            color: var(--text-sub);
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>AFIX: AI-driven self-Fixing system</h1>
+        <p class="subtitle">2026 대한기계학회 춘계학술대회 Vibe Coding 경진대회 출품작</p>
+    </header>
+
+    <div class="card">
+        <div class="card-title">기획</div>
+        <div class="card-content">
+            <p><strong>어떤 문제를 왜 해결하려 했는가</strong></p>
+            <p>소프트웨어 운영 중 발생하는 <span class="highlight">런타임 에러(Runtime Error)</span>는 서비스 중단의 주된 원인입니다. 특히 무인 서버나 실시간 제어 환경에서는 개발자가 즉각 대응하기 어려워 작은 버그가 치명적인 사고로 이어집니다.</p>
+            <p>AFIX는 에러 발생 시 시스템이 스스로 Gemini AI를 호출하여 원인을 분석하고, 인간의 개입 없이 즉시 코드를 수정하여 서비스를 지속하는 <span class="highlight">자가 치유(Self-Healing) 인프라</span>를 구축하고자 기획되었습니다.</p>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">구성물</div>
+        <div class="card-content">
+            <p><strong>주요 기능 목록</strong></p>
+            <ul>
+                <li><span class="badge">서버 자가 치유</span> FastAPI 예외 핸들러와 연동된 실시간 코드 수정 엔진</li>
+                <li><span class="badge">Omni-Watchdog</span> 프로젝트 내 모든 파이썬 파일의 에러를 실시간 감시 및 수리</li>
+                <li><span class="badge">인코딩 최적화</span> 윈도우 환경 특유의 한글 에러 로그 깨짐 방지 시스템</li>
+                <li><span class="badge">코어 보호</span> 시스템 핵심 파일(watcher, agent 등)에 대한 수정 접근 제한</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">실현 방법</div>
+        <div class="card-content">
+            <p><strong>사용 기술 및 AI 도구 활용 과정</strong></p>
+            <table>
+                <tr>
+                    <th>분류</th>
+                    <th>내용</th>
+                </tr>
+                <tr>
+                    <td>메인 언어 및 프레임워크</td>
+                    <td>Python 3.11, FastAPI</td>
+                </tr>
+                <tr>
+                    <td>AI 모델</td>
+                    <td>Gemini 2.5 Flash (Google GenAI)</td>
+                </tr>
+                <tr>
+                    <td>AI 활용 과정</td>
+                    <td>Gemini와 대화하며 아키텍처를 설계하고, 에러 로그 분석 프롬프트를 최적화하여 코드 생성의 정확도를 높였습니다.</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">결과</div>
+        <div class="card-content">
+            <p><strong>완성된 프로그램 설명</strong></p>
+            <p>에러가 포함된 코드를 저장하는 즉시 Watchdog이 이를 감지합니다. AI가 에러 원인을 파악해 수정된 코드를 반환하며, 1초 내에 소스 코드가 자동으로 덮어씌워져 실행이 재개됩니다. 이를 통해 개발자는 버그 수정에 드는 반복적인 시간을 획기적으로 단축할 수 있습니다.</p>
+            <div style="text-align: center; color: var(--text-sub); padding: 20px; border: 2px dashed var(--border-color); border-radius: 8px;">
+                (여기에 프로그램 실행 스크린샷 이미지를 삽입하세요)
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">특장점</div>
+        <div class="card-content">
+            <ul>
+                <li><strong>극강의 경량화:</strong> 추가적인 데이터베이스나 무거운 UI 없이 핵심 엔진만으로 동작합니다.</li>
+                <li><strong>범용적 확장성:</strong> 특정 파일에 국한되지 않고 프로젝트 폴더 내 모든 `.py` 파일을 관리합니다.</li>
+                <li><strong>실시간 반응성:</strong> 사람이 인지하기도 전에 시스템이 먼저 에러를 고치고 보고합니다.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">한계점</div>
+        <div class="card-content">
+            <ul>
+                <li><strong>논리 오류 파악:</strong> 문법적 에러는 완벽히 고치나, 비즈니스 로직상의 깊은 의도 파악에는 한계가 있습니다.</li>
+                <li><strong>네트워크 의존성:</strong> AI 모델 호출을 위해 반드시 외부 API 연결이 필요합니다.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-title">Todo</div>
+        <div class="card-content">
+            <ul>
+                <li>코드 수정 전 유닛 테스트 자동 실행 로직 추가 (안정성 강화)</li>
+                <li>Git과 연동하여 AI가 수정한 내용을 자동으로 커밋하는 기능 구현</li>
+                <li>다양한 프로그래밍 언어(C++, JS 등)로의 지원 범위 확장</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 AFIX Project Team. All rights reserved.</p>
+    </footer>
+</div>
+
+</body>
+</html>
